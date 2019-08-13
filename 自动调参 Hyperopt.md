@@ -51,11 +51,23 @@ print(space_eval(space, best))
 ### 参数空间
 定义的space即为自动调参定义的参数空间，自动调参的参数范围会在参数空间中选择或遍历，Hyperopt提供的定义参数空间的类型包括：
 
-- hp.choice：对定义的list或tuple中元素随机选择；
-- hp.uniforme：定义一个连续的数值范围
-- hp.randint：定义从0开始的整数范围，当不需要从0开始时，可以加常数进行自己定义
-- hp.normal：定义一个正态分布的连续数组
+- hp.choice：对定义的list或tuple中元素随机选择。Choice of "categorical" configuration parameters such as the "gini entropy" vs "information gain" parameters.
+- hp.uniform：定义一个连续的数值范围。I like that this gives me exact control over the value range, and is easier to set than playing with the parameters of the normal distribution. The quantized and log versions give some control to also weight this besides the plain normal distribution versions.
+- hp.randint：定义从0开始的整数范围，当不需要从0开始时，可以加常数进行自己定义。不确定它是否和随即挑一个值有区别，但我觉得可以试试看hyperopt是否能make any use of a seed value generated with this function. It also allows hyperopt to play with the value along with other values.
+- hp.normal：定义一个正态分布的连续数组。Could try the variants of this sometimes to see if it makes any difference in the distributions. Many seem to use it, although I like the uniform variants for simplicity.
 - 其他 hp.qnormal，hp.lognormal，hp.qlognormal，hp.quniform，hp.loguniform，hp.qloguniform 其他数据分布或是添加常数改变数值的步长或变化趋势
+
+
+### 从hyperopt导入一些有用的函数
+- fmin：最主要的函数, 将我们的functional最小化
+- tpe and anneal：优化 approaches
+- hp：包含了不同的变量分布
+- Trials：用于logging
+
+```Python
+from hyperopt import fmin, tpe, hp, anneal, Trials
+```
+hyperop.fmin的interface不同于Grid或Randomized search. First of all we need to create a function to minimize.
 
 ### 自动调参算法
 fmin(objective, space, algo=tpe.suggest, max_evals=100)
