@@ -1,5 +1,7 @@
 # 随机梯度下降分类器 SGD Classifier
 
+[sklearn.linear_model.SGDClassifier](https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.SGDClassifier.html#sklearn.linear_model.SGDClassifier.fit)
+
 - 主要应用对象：**大规模稀疏数据问题**，经常用在**文本分类及自然语言处理**。假如数据是稀疏的，该模块的分类器可轻松解决如下问题：**超过10^5的训练样本、超过10^5的features**
 - 优点：
   1. Efficiency
