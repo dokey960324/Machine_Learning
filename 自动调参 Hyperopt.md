@@ -131,7 +131,7 @@ def hyperopt_fun(X, y,params):
 ## Microsoft NNI
 NNI（Neural Network Intelligence）是微软开源的自动机器学习工具包
 
-项目地址：[Microsoft/nni(https://link.zhihu.com/?target=https%3A//github.com/microsoft/nni)] 
+项目地址：[Microsoft/nni](https://link.zhihu.com/?target=https%3A//github.com/microsoft/nni)
 
 它本地、远程服务器和云端通过不同的调参算法来寻找最优的神经网络架构和超参数
 
